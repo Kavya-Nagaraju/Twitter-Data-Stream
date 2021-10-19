@@ -1,7 +1,7 @@
 ## Twitter Data Stream
 Stream Covid-19 related Twitter Data into BigQuery, using Pub/Sub.
 </br>
-![Alt text](design.jpg?raw=true)
+![alt text](design.JPG?raw=true)
 </br>
 The project demonstartes, developement of ETL pipeline on GCP.
  EXTRACT - Stream data from Twitter.
@@ -17,23 +17,23 @@ The project demonstartes, developement of ETL pipeline on GCP.
 
 1. Obtaining Twitter credentials
 2. Create IAM Service accound and assigned following roles.
-- BigQuery Data Editor
-- BigQuery Job User
-- Dataflow Developer
-- Pub/Sub Editor
+    - BigQuery Data Editor
+    - BigQuery Job User
+    - Dataflow Developer
+    - Pub/Sub Editor
 
 ##### Creating a Producer
-    PRODUCER - Listen to streaming Twitter data, I have used tweepy library that takes an Array of keywords that will filter the real-time tweet stream. Upon receiving the data, the data is published to `tweets` topic of the Pub/Sub model.
+PRODUCER - Listen to streaming Twitter data, I have used tweepy library that takes an Array of keywords that will filter the real-time tweet stream. Upon receiving the data, the data is published to `tweets` topic of the Pub/Sub model.
 
 ##### Creating a Consumer
-    CONSUMER - Consumer is a Cloud Data Flow job. Consumer’s task is to stream messages from Pub/Sub topic `tweets` to BigQuery table. A Big Query table is created with the below schema.
-    created_at :	STRING		
-    id :	STRING		
-    retweet_count :	STRING		
-    text :	STRING		
-    user_name :	STRING		
-    user_location :	STRING		
-    user_followers_count :	STRING		
+CONSUMER - Consumer is a Cloud Data Flow job. Consumer’s task is to stream messages from Pub/Sub topic `tweets` to BigQuery table. A Big Query table is created with the below schema.
+- created_at :	STRING		
+- id :	STRING		
+- retweet_count :	STRING		
+- text :	STRING		
+- user_name :	STRING		
+- user_location :	STRING		
+- user_followers_count :	STRING		
 
 ##### The collected data has the below USECASES:
  1. Determine total tweets, for each hour, day, week etc.
